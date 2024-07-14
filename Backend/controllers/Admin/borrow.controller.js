@@ -87,7 +87,7 @@ exports.returnBook = async (req, res) => {
           {
             amount: {
               currency_code: "INR",
-              value: borrow.lateFee.toFixed(2),
+              value: borrow?.lateFee?.toFixed(2),
             },
             description: `Late fee for borrow ID: ${borrow._id}`,
           },
@@ -100,7 +100,7 @@ exports.returnBook = async (req, res) => {
       sendEmail(
         user.email,
         "Late Fee Payment",
-        `You have returned ${borrow.book.title} late. Please pay the late fee of $${borrow.lateFee} using the following link: ${paymentLink}`
+        `You have returned ${borrow?.book?.title} late. Please pay the late fee of $${borrow?.lateFee} using the following link: ${paymentLink}`
       );
     } else {
       sendEmail(
@@ -147,7 +147,7 @@ exports.createPayment = async (req, res) => {
       {
         amount: {
           currency_code: "INR",
-          value: lateFee.toFixed(2),
+          value: lateFee,
         },
         description: `Late fee for borrow ID: ${borrowId}`,
       },
