@@ -17,6 +17,6 @@ router.use(authentication.protect);
 // Admin Routes
 router.use("/admin", authorization([constants.roles.admin, constants.roles.librarian]), adminRoutes);
 
-router.use("/user", authorization([constants.roles.user]), userRoutes);
+router.use("/user", authorization([constants.roles.user, constants.roles.librarian]), userRoutes);
 
 module.exports = router;
